@@ -1,5 +1,9 @@
 import tkinter as tk
-import sqlite3
+try: 
+    import sqlite3
+except ImportError:
+    import pysqlite3 as sqlite3
+
 
 # sorry for globals...
 first_name: tk.StringVar
@@ -162,7 +166,7 @@ def main():
     phone_number=tk.StringVar()
     output_label=tk.StringVar()
     # set the title of the window
-    root.geometry("400x400")
+    root.geometry("700x700")
     root.title("Jim's Phonebook")
 
     validated_int_func = root.register(only_int)
