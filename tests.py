@@ -38,6 +38,14 @@ def test_delete():
     assert show_all("test.db") == [('Jim', 'Faulker',  '1234554321', 'January 1, 2000')]
 
 
-
+# test that we can edit a row in the database
+def test_edit():
+    rm_db()
+    from jim_application import create_table, insert_db, show_all, edit_db
+    create_table("test.db")
+    insert_db("Joe", "Faulker", "1234554322", "December 1, 2000", db_name="test.db")
+    # change birthday from Dec 1 to Dec 2 for Joe and also phone number
+    edit_db("Joe", "Faulker", "1234554325", "December 2, 2000", db_name="test.db")
+    assert show_all("test.db") == [('Joe', 'Faulker', '1234554325', 'December 2, 2000')]
 
 
